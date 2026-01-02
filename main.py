@@ -5,7 +5,7 @@ import os
 # Replace with your own Discord API URL, or use the global one (https://discord.com/api/)
 DISCORD_API_BASE_URL = "https://discord.com/api/v9"
 
-Tokens_data = os.getenv("ACCOUNTS").strip()
+Tokens_data = json.load(os.getenv("ACCOUNTS").strip())
 
 DISCORD_BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN").strip()
 
