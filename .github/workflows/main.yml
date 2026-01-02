@@ -1,0 +1,42 @@
+name: Posting
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs every 30 minutes
+  workflow_dispatch:
+
+
+jobs:
+  post_job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Run posting script
+        env:
+          ACCOUNTS: ${{ secrets.ACCOUNTS }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          
+          
+
+        run: |
+          python main.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add Account_Tokens.json
+          git commit -m "Daily JSON update" || echo "No changes to commit"
+          git push
