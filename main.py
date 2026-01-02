@@ -99,7 +99,7 @@ def check_unread(dm_channels_data, token, read_messages_data, name):
             url = f"https://discord.com/api/v10/channels/{CHANNEL_ID}/messages"
 
             headers = {
-                "Authorization": f"Bot {Discord_BOT_TOKEN}",
+                "Authorization": f"Bot {DISCORD_BOT_TOKEN}",
                 "Content-Type": "application/json"
             }
 
