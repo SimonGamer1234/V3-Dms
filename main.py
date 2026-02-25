@@ -121,9 +121,9 @@ def check_unread(dm_channels_data, token, read_messages_data, name):
 def main():
     for token1 in Tokens_data:
         print(token1)
-        token = token1["Token"]
-        name = token1["Name"]
-        cathegory = token1["Cathegory"]
+        token = token1["token"]
+        name = token1["name"]
+        cathegory = token1["cathegory"]
         if "Test" not in cathegory:
             dm_channels_data = get_user_dms(token)
             check_unread(dm_channels_data, token, read_messages_data, name)
