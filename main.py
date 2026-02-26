@@ -52,7 +52,7 @@ def check_unread(dm_channels_data, token, read_messages_data, name):
         time.sleep(2)
         data = response.json()
         
-        print(json.dumps(data, indent=4))
+        # print(json.dumps(data, indent=4))
         last_message_id = channel["last_message_id"]
         index = 1000
         Found = False
@@ -108,7 +108,7 @@ def check_unread(dm_channels_data, token, read_messages_data, name):
                 "embeds": message["embeds"]
                 
             }
-
+			print(payload)
             response = requests.post(url, headers=headers, json=payload)
             time.sleep(1)
             print(response.status_code)
